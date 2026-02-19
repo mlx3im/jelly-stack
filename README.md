@@ -10,14 +10,17 @@ Added avahi systemd unit file as an example
 https://github.com/mlx3im/jelly-stack/blob/master/avahi-alias%40.service
 
 Aliases can be added in the following way:
+```
 systemctl --user start avahi-alias@qbit
 systemctl --user start avahi-alias@jellyfin
 systemctl --user start avahi-alias@sonarr
+```
 etc.
 
 External endpoints look like this:
-jellyfin.local
+```jellyfin.local
 sonarr.local
 radarr.local
 etc.
+```
 
