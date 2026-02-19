@@ -1,0 +1,28 @@
+qbit.local:80 {
+    reverse_proxy 127.0.0.1:8080
+}
+
+seerr.local:80 {
+    reverse_proxy 127.0.0.1:5055
+}
+
+radarr.local:80 {
+    reverse_proxy 127.0.0.1:7878
+}
+
+sonarr.local:80 {
+    reverse_proxy 127.0.0.1:8989
+}
+
+jackett.local:80 {
+    reverse_proxy 127.0.0.1:9117
+}
+
+jellyfin.local:80 {
+    reverse_proxy 127.0.0.1:8096
+}
+
+# Optional: catch-all / redirect unknown hostnames
+:80 {
+    respond "Not found" 404
+}
