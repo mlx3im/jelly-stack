@@ -1,7 +1,8 @@
 sonarr, radarr, qbittorrent can be accessed by other services with a docker compose service names and port numbers, e.g
 radarr:7878
 
-All external traffic goes through the Caddy reverseproxy
+All external traffic goes through the Caddy reverseproxy.
+
 mDNS service used to broadcast local FQDN's
 
 Used https://avahi.org/ in my case
