@@ -1,0 +1,13 @@
+[Unit]
+Description=Avahi alias %I → miniArch
+After=avahi-daemon.service
+Wants=avahi-daemon.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/avahi-publish -a -R "%I" 192.168.103.110
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
