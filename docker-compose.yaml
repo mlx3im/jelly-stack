@@ -4,12 +4,10 @@ services:
     image: caddy:latest
     container_name: caddy
     restart: unless-stopped
-    network_mode: host
-    # mDNS requires host networking for braodcast, thus no network isolation happens for caddy :(
-    #ports:
-    #  - "80:80"
-    #  - "443:443"
-    #  - "443:443/udp"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
     volumes:
       - ${APP_DATA}/caddy/config:/etc/caddy
       - ${APP_DATA}/caddy/site:/srv # static srv zones
@@ -28,17 +26,17 @@ services:
     volumes:
       - ${APP_DATA}/jackett/config:/config
       - ${APP_STORAGE}/downloads/:/downloads
-    ports:
-      - 127.0.0.1:9117:9117
+    expose:
+      - 9117
     restart: unless-stopped
 
   jellyfin:
     image: jellyfin/jellyfin
     container_name: jellyfin
     user: 1001:1002
-    ports:
-      - 8096:8096/tcp
-      - 7359:7359/udp
+    expose:
+      - 8096/tcp
+      - 7359/udp
     volumes:
       - ${APP_DATA}/jellyfin/config:/config
       - ${APP_DATA}/jellyfin/cache:/cache
@@ -74,10 +72,10 @@ services:
     volumes:
       - ${APP_DATA}/qbittorrent/config:/config
       - ${APP_STORAGE}/downloads/:/downloads
-    ports:
-      - 127.0.0.1:8080:8080
-      - 127.0.0.1:6881:6881
-      - 127.0.0.1:6881:6881/udp
+    expose:
+      - 8080
+      - 6881
+      - 6881/udp
     restart: unless-stopped
 
   radarr:
@@ -91,8 +89,8 @@ services:
       - ${APP_DATA}/radarr/config:/config
       - ${APP_STORAGE}/movies:/movies
       - ${APP_STORAGE}/downloads/:/downloads
-    ports:
-      - 127.0.0.1:7878:7878
+    expose:
+      - 7878
     restart: unless-stopped
 
   sonarr:
@@ -118,8 +116,8 @@ services:
       - LOG_LEVEL=debug
       - TZ=${APP_TIMEZONE}
       - PORT=5055 #optional
-    ports:
-      - 127.0.0.1:5055:5055
+    expose:
+      - 5055
     volumes:
       - ${APP_DATA}/seerr/config/:/app/config
     healthcheck:
