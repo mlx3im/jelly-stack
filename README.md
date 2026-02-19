@@ -3,6 +3,7 @@ radarr:7878
 
 All external traffic goes through the Caddy reverseproxy
 mDNS service used to broadcast local FQDN's
+
 Used https://avahi.org/ in my case
 
 Added avahi systemd unit file as an example
