@@ -1,0 +1,9 @@
+jackett/config/*
+sonarr/config/*
+jellyfin/config/*
+jellyfin/cache/*
+qbittorrent/config/*
+radarr/config/*
+seerr/config/*
+
+.nvimlog
